@@ -70,6 +70,20 @@ set.seed(19680828)
 
 ***
 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<matrix>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 1 </cn> <cn> 0 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 0 </cn> <cn> 0 </cn> <cn> 1 </cn>
+  </matrixrow>
+  <matrixrow>
+    <cn> 1 </cn> <cn> 0 </cn> <cn> 0 </cn>
+  </matrixrow>
+</matrix>
+</math>
+
 ### Analytical Process
 #### Data Acquisition
 No external dataset is required for this analysis.  All analyses are performed on simulated data.  
