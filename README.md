@@ -21,7 +21,7 @@ The Central Limit Theorem provides an adequate approximation for describing the 
 
 ### Analytical Context
 #### Scientific Discussion
-The exponential distribution, although having a wide array of applications in science and mathematics, possesses a shape that is highly non-Normal.  Although it possesses a peak at $x = 0$, it is highly skewed in that it is only defined for nonnegative inputs.  In contrast, the Central Limit Theorem in statistics (Ott 1993) states that any distribution of data that is created as the result of equally-weighted sums of variables will tend to be increasingly normal in shape as the number of sums increases.  The CLT further states that such will be true regardless of the fundamental distribution of the constituent variables.  
+The exponential distribution, although having a wide array of applications in science and mathematics, possesses a shape that is highly non-Normal.  Although it possesses a peak at x = 0, it is highly skewed in that it is only defined for nonnegative inputs.  In contrast, the Central Limit Theorem in statistics (Ott 1993) states that any distribution of data that is created as the result of equally-weighted sums of variables will tend to be increasingly normal in shape as the number of sums increases.  The CLT further states that such will be true regardless of the fundamental distribution of the constituent variables.  
 In this analysis the CLT is put to the test as we examine sums and variances of sets of 40 samples taken from the exponential distribution.
 
 #### Software Environment
@@ -70,18 +70,16 @@ set.seed(19680828)
 
 ***
 
-![eq1](equations/eq1.png)
+
 
 ### Analytical Process
 #### Data Acquisition
 No external dataset is required for this analysis.  All analyses are performed on simulated data.  
 Simulations make use of the 'rexp' command in R, which generates random numbers distributed according to an exponential distribution:
 
-$$
-p(x) = \left\{ \begin{array}{rl} 0 & x<0 \\ \lambda e^{-\lambda x} & x \geq 0 \end{array} \right.
-$$
+![eq1](equations/eq1.png)
 
-where $\lambda$ is a rate parameter.  An example of this distribution is shown below with a lambda parameter of 1:
+where lambda is a rate parameter.  An example of this distribution is shown below with a lambda parameter of 1:
 
 ```r
 hist(rexp(100000,1),xlab="x",main="The Exponential Distribution, Lambda = 1")
@@ -91,11 +89,7 @@ hist(rexp(100000,1),xlab="x",main="The Exponential Distribution, Lambda = 1")
 
 From Casella and Berger (1990) we are informed that the mean and variance of this distribution are:
 
-$$
-\mu = E\{p(x)\} = \int_0^{\infty} \lambda x e^{-\lambda x} dx = \frac{1}{\lambda}
-\hspace{35pt}
-\sigma^2 = \sigma^2\{p(x)\} = \int_0^{\infty} \lambda x^2 e^{-\lambda x} dx - E\{p(x)\}^2 = \frac{1}{\lambda^2}
-$$
+![eq2](equations/eq2.png)
 
 In the following analysis we are working specifically with an exponential distribution with a lambda value of 0.2.  
 
@@ -109,13 +103,9 @@ hist(x,xlab="x",main="Our Specific Exponential Distribution, Lambda = 0.2")
 
 ![plot of chunk define x](figure/define x-1.png)
 
-Given our value of $\lambda$ we can calculate theoretical values of the mean and variance:
+Given our value of lambda we can calculate theoretical values of the mean and variance:
 
-$$
-E\{p(x)\} = \frac{1}{\lambda}=\frac{1}{0.2}=5
-\hspace{35pt}
-\sigma^2\{p(x)\} = \frac{1}{\lambda^2}=5^2=25
-$$
+![eq3](equations/eq3.png)
 
 which we can also confirm computationally:
 
@@ -149,15 +139,11 @@ z
 
 According to the Central Limit Theorem, estimates of a population mean should be approximately normally distributed:
 
-$$
-\overline{x} \sim N(\mu,\frac{\sigma^2}{n})
-$$
+![eq4](equations/eq4.png)
 
 In our case we are directed to work with samples of size 40, so our estimates should be distributed accordingly:
 
-$$
-\overline{x_{40}} \sim N(5,\frac{25}{40}) = N(5,0.625)
-$$
+![eq5](equations/eq5.png)
 
 This is simulated using 1000 averages of 40 samples:
 
@@ -186,33 +172,22 @@ z
 ## 4.9772797 0.6037561
 ```
 
-Lastly, a perhaps even more intense test of the CLT can come from a comparison of the sample variances with theory.  If $Z_1, \dots, Z_k$ are independent, standard normal random variables:
+Lastly, a perhaps even more intense test of the CLT can come from a comparison of the sample variances with theory.  If Z_1...Z_k are independent, standard normal random variables:
 
-$$
-Z \sim N(0,1)
-$$
+![eq6](equations/eq6.png)
 
-then the variance of a sample of size $k$ should be distributed according to the chi-squared distribution. This is demonstrated via the following:
+then the variance of a sample of size k should be distributed according to the chi-squared distribution. This is demonstrated via the following:
 
-$$
-\sigma^2\{Z\} = E\{ Z^2 \}  - (E\{Z\})^2 = E\{Z^2\} = \frac{1}{k}\sum_{i=1}^{k}Z_i^2
-$$
-$$
-(k-1)\sigma^2\{Z\} = \sum_{i=1}^{k}Z_i^2 \sim \chi^2_{k-1}
-$$
+![eq7](equations/eq7.png)
+![eq8](equations/eq8.png)
 
-where we have subracted off one degree of freedom $(k-1)$ for the calculation of the mean and have utilized properties of random variables defined by Neter et al. (1996). Then for our purposes:
+where we have subracted off one degree of freedom (k-1) for the calculation of the mean and have utilized properties of random variables defined by Neter et al. (1996). Then for our purposes:
 
-$$
-\frac{(x_{40}-5)}{\sqrt{0.625}} \sim N(0,1)
-$$
+![eq9](equations/eq9.png)
 
 and so:
 
-$$
-(k-1)\sigma^2\{\frac{(x_{40}-5)}{\sqrt{0.625}}\} = \frac{(k-1)}{0.625}\sigma^2\{x_{40}\} \sim \chi^2(k-1)
-$$
-
+![eq10](equations/eq10.png)
 
 ```r
 xx <- replicate(1000,var(sample(x,40)))
