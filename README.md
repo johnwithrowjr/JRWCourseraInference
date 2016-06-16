@@ -172,31 +172,6 @@ z
 ## 4.9772797 0.6037561
 ```
 
-Lastly, a perhaps even more intense test of the CLT can come from a comparison of the sample variances with theory.  If Z_1...Z_k are independent, standard normal random variables:
-
-![eq6](equations/eq6.png)
-
-then the variance of a sample of size k should be distributed according to the chi-squared distribution. This is demonstrated via the following:
-
-![eq7](equations/eq7.png)
-![eq8](equations/eq8.png)
-
-where we have subracted off one degree of freedom (k-1) for the calculation of the mean and have utilized properties of random variables defined by Neter et al. (1996). Then for our purposes:
-
-![eq9](equations/eq9.png)
-
-and so:
-
-![eq10](equations/eq10.png)
-
-```r
-xx <- replicate(1000,var(sample(x,40)))
-hist(xx/.625,ylim=c(0,60),breaks=seq(0,200),xlab="Sample Variance / Theoretical Variance",main="Histogram of Sample Variance / Theoretical Variance")
-lines(seq(0,200),dchisq(seq(0,200),df=39)*1000)
-```
-
-![plot of chunk samplesvar](figure/samplesvar-1.png)
-
 ### Conclusion
 The Central Limit Theorem provides an adequate approximation for describing the distribution of possible means and variances of a population, even when the original population has a distribution of values that significantly depart from those of a Normal distribution.
 
