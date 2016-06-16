@@ -58,8 +58,9 @@ sessionInfo()
 ## [16] yaml_2.1.13        digest_0.6.8       crayon_1.3.1      
 ## [19] formatR_1.4        ggplot2_2.1.0      bitops_1.0-6      
 ## [22] rsconnect_0.4.1.11 RCurl_1.95-4.8     testthat_1.0.2    
-## [25] evaluate_0.9       memoise_1.0.0      rmarkdown_0.9.6   
-## [28] stringi_1.0-1      scales_0.4.0       swirl_2.4.1
+## [25] mime_0.3           evaluate_0.9       memoise_1.0.0     
+## [28] rmarkdown_0.9.6    stringi_1.0-1      scales_0.4.0      
+## [31] swirl_2.4.1        markdown_0.7.7
 ```
 Random Number Seed: 19680828
 
