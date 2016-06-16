@@ -70,7 +70,7 @@ set.seed(19680828)
 
 ***
 
-![eq1](https://github.com/johnwithrowjr/JRWCourseraInference/tree/master/equations/eq1.png)
+![eq1](/johnwithrowjr/JRWCourseraInference/tree/master/equations/eq1.png)
 
 ### Analytical Process
 #### Data Acquisition
